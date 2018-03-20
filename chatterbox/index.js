@@ -3,7 +3,6 @@ var http = require("http");
 var fs = require("fs");
 var extract = require("./extract");
 var Mime = require("mime-types");
-var wss = require('./websockets-server');
 
 var handleError = function(err, res) {
   res.writeHead(404);
@@ -22,12 +21,6 @@ var server = http.createServer(function(req, res) {
       handleError(err, res);
       return;
     } else {
-
-      //console.log(req);
-      //console.log(res);
-      //console.log(filePath);
-      //var fileExtension = filePath.substr((filePath.lastIndexOf(".") + 1));
-      //console.log (fileExtension);
       var type = Mime.lookup(filePath);
       console.log (type);
       console.log (filePath);
